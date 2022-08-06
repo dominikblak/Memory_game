@@ -24,10 +24,16 @@
 .gameBoxes__panel {
 }
 .gameBoxes__correctLeds {
-}
-.gameBoxes__ledsList {
   display: flex;
-  flex-direction: column;
+}
+.gameBoxes__correctLed {
+  box-shadow: 2px 5px #5754546e;
+  background: #5e5b5b;
+  border: 5px solid black;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 50%;
 }
 
 .gameBoxes__gameBoard {
