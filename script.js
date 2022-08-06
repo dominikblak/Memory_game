@@ -10,8 +10,8 @@ buttonStartGame.addEventListener("click", () => {
 const startGame = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
   for (i = 1; i <= choiceNumberOfSteps; i++) {
-    draw = Math.floor(Math.random() * 9) + 1;
+    draw = Math.floor(Math.random() * 17) + 1;
     randomArray.push(draw);
-    console.log(randomArray);
   }
+  console.log(randomArray);
 };
