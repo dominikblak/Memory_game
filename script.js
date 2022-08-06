@@ -5,13 +5,13 @@ const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
 
 buttonStartGame.addEventListener("click", () => {
-  const choiceNumberOfSteps = document.getElementById("steps").value;
-  console.log(choiceNumberOfSteps);
+  startGame();
 });
-
-// const numberOfSteps = document.querySelector(".js-steps");
-// const choiceNumberOfSteps = numberOfSteps.value;
-// for (let steps = choiceNumberOfSteps; i <= steps; steps++) {
-//   rand = Math.floor(Math.random() * 9) + 1;
-//   randomArray.push(rand);
-// }
+const startGame = () => {
+  const choiceNumberOfSteps = document.getElementById("steps").value;
+  for (i = 1; i <= choiceNumberOfSteps; i++) {
+    draw = Math.floor(Math.random() * 9) + 1;
+    randomArray.push(draw);
+    console.log(randomArray);
+  }
+};
