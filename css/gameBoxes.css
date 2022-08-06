@@ -24,6 +24,7 @@
 .gameBoxes__panel {
 }
 .gameBoxes__correctLeds {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -40,17 +41,15 @@
 .gameBoxes__gameBoard {
 }
 .gameBoxes__tiles {
-  vertical-align: middle;
-  margin: 15px;
+  height: 300px;
+  width: 300px;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 100px;
-  grid-row-gap: 100px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 .gameBoxes__tile {
   border: 1px solid white;
-  width: 15px;
-  height: 15px;
   background: black;
 }
