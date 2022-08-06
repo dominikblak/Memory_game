@@ -25,5 +25,10 @@
 }
 .gameBoxes__correctLeds {
 }
+.gameBoxes__ledsList {
+  display: flex;
+  flex-direction: column;
+}
+
 .gameBoxes__gameBoard {
 }
