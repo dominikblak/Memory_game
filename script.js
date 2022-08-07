@@ -1,4 +1,5 @@
 const randomArray = [];
+const copyclickArray = [];
 const clickArray = [];
 let delay = 0;
 let level = 0;
@@ -12,14 +13,14 @@ buttonStartGame.addEventListener("click", () => {
 const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
   for (i = 1; i <= choiceNumberOfSteps; i++) {
-    draw = Math.floor(Math.random() * 16) + 1;
+    draw = Math.floor(Math.random() * 15) + 1;
     randomArray.push(draw);
   }
   output_signals();
   console.log(randomArray);
 };
 const animate_sequence_button = (id) => {
-  const tileRandom = document.getElementById(id);
+  let tileRandom = document.getElementById(id);
   tileRandom.classList.add("active");
   setTimeout(() => {
     tileRandom.classList.remove("active");
