@@ -54,7 +54,6 @@
   border: 10px solid #656565;
   border-radius: 10px;
   box-shadow: 0px 11px 8px 0px black;
-  cursor: pointer;
 }
 .gameBoxes__tile--left {
   background: black;
@@ -64,4 +63,5 @@
 }
 .tileUserReady {
   background-color: antiquewhite;
+  cursor: pointer;
 }
