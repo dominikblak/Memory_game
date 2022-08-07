@@ -6,6 +6,7 @@ let level = 0;
 const numberOfSteps = document.querySelector(".js-steps");
 const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
+const rightBox = document.querySelectorAll(".js-gbTile");
 
 buttonStartGame.addEventListener("click", () => {
   create_game();
@@ -32,5 +33,8 @@ const output_signals = (id) => {
     setTimeout(() => {
       animate_sequence_button("tileleft" + title);
     }, (delay += 1000));
+    rightBox.forEach((tile) => {
+      tile.classList.add("tileUserReady");
+    });
   });
 };

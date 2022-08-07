@@ -21,8 +21,7 @@
   border-top-color: white;
   border-bottom-color: grey;
 }
-.gameBoxes__panel {
-}
+
 .gameBoxes__correctLeds {
   width: 100%;
   display: flex;
@@ -39,8 +38,6 @@
   border-radius: 50%;
 }
 
-.gameBoxes__gameBoard {
-}
 .gameBoxes__tiles {
   height: 300px;
   width: 300px;
