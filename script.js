@@ -1,5 +1,7 @@
 const randomArray = [];
 const clickArray = [];
+let delay = 0;
+let level = 0;
 const numberOfSteps = document.querySelector(".js-steps");
 const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
@@ -7,13 +9,36 @@ const buttonStartGame = document.querySelector(".js-startGame");
 buttonStartGame.addEventListener("click", () => {
   create_game();
 });
-
 const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
   for (i = 1; i <= choiceNumberOfSteps; i++) {
     draw = Math.floor(Math.random() * 17) + 1;
     randomArray.push(draw);
   }
-
+  output_signals();
   console.log(randomArray);
+  console.log(led);
+};
+const animate_sequence_button = (id) => {
+  const button = document.getElementById(id);
+  button.classList.add("active");
+  setTimeout(() => {
+    button.classList.remove("active");
+  }, 1000);
+};
+
+const animateLed = (id) => {
+  const led = document.getElementById(cl);
+  led.classList.add("active");
+  setTimeout(() => {
+    led.classList.remove("active");
+  }, 1000);
+};
+const output_signals = (id) => {
+  randomArray.forEach((title, index) => {
+    setTimeout(() => {
+      animate_sequence_button("tileleft" + title);
+      document.getElementById("leftled" + index).classList.add("correctled");
+    }, (delay += 1000));
+  });
 };
