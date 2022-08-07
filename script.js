@@ -20,8 +20,8 @@ const animate_sequence_button = (id) => {
   const button = document.getElementById(id);
   button.classList.add("active");
   setTimeout(() => {
-    button.classList.remove("activeLeftTitle");
-  }, 400);
+    button.classList.remove("active");
+  }, 1000);
 };
 
 const output_signals = (id) => {
