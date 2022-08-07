@@ -19,10 +19,10 @@ const create_game = () => {
   console.log(randomArray);
 };
 const animate_sequence_button = (id) => {
-  const button = document.getElementById(id);
-  button.classList.add("active");
+  const tileRandom = document.getElementById(id);
+  tileRandom.classList.add("active");
   setTimeout(() => {
-    button.classList.remove("active");
+    tileRandom.classList.remove("active");
   }, 1000);
 };
 
