@@ -13,7 +13,7 @@ buttonStartGame.addEventListener("click", () => {
 const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
   for (i = 1; i <= choiceNumberOfSteps; i++) {
-    draw = Math.floor(Math.random() * 15) + 1;
+    draw = Math.floor(Math.random() * 16) + 1;
     randomArray.push(draw);
   }
   output_signals();
