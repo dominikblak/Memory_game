@@ -1,17 +1,35 @@
 const randomArray = [];
 const clickArray = [];
+let delay = 0;
+let level = 0;
 const numberOfSteps = document.querySelector(".js-steps");
 const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
 
 buttonStartGame.addEventListener("click", () => {
-  startGame();
+  create_game();
 });
-const startGame = () => {
+const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
   for (i = 1; i <= choiceNumberOfSteps; i++) {
-    draw = Math.floor(Math.random() * 17) + 1;
+    draw = Math.floor(Math.random() * 16) + 1;
     randomArray.push(draw);
   }
+  output_signals();
   console.log(randomArray);
+};
+const animate_sequence_button = (id) => {
+  const tileRandom = document.getElementById(id);
+  tileRandom.classList.add("active");
+  setTimeout(() => {
+    tileRandom.classList.remove("active");
+  }, 1000);
+};
+
+const output_signals = (id) => {
+  randomArray.forEach((title, index) => {
+    setTimeout(() => {
+      animate_sequence_button("tileleft" + title);
+    }, (delay += 1000));
+  });
 };
