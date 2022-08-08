@@ -1,6 +1,6 @@
 const randomArray = [];
-const copyclickArray = [];
 const clickArray = [];
+let clickArrayNumber = [];
 let delay = 0;
 let level = 0;
 const numberOfSteps = document.querySelector(".js-steps");
@@ -30,11 +30,40 @@ const animate_sequence_button = (id) => {
 
 const output_signals = (id) => {
   randomArray.forEach((title, index) => {
-    setTimeout(() => {
-      animate_sequence_button("tileleft" + title);
-    }, (delay += 1000));
+    if (index !== 0) {
+      return;
+    } else {
+      setTimeout(() => {
+        animate_sequence_button("tileleft" + title);
+        validationUserInput(index);
+      }, (delay += 1000));
+      rightBox.forEach((tile) => {
+        tile.classList.add("tileUserReady");
+      });
+    }
+  });
+};
+const animateClickTile = (event) => {
+  const clickedTileId = event.target.id;
+  clickArray.push(clickedTileId);
+  const clickedTile = event.target;
+  clickedTile.classList.add("active");
+  setTimeout(() => {
+    clickedTile.classList.remove("active");
     rightBox.forEach((tile) => {
       tile.classList.add("tileUserReady");
     });
+  }, 1000);
+  clickArrayNumber = clickArray.map((str) => {
+    return Number(str);
   });
+
+  console.log(clickArrayNumber);
+};
+for (const tile of rightBox) {
+  tile.addEventListener("click", animateClickTile);
+}
+
+const validationUserInput = (index) => {
+  randomArray[index] === clickArrayNumber[index] ? console.log("true") : console.log("false");
 };
