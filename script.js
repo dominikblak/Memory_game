@@ -1,5 +1,4 @@
 const randomArray = [];
-const copyclickArray = [];
 const clickArray = [];
 let delay = 0;
 let level = 0;
@@ -39,6 +38,7 @@ const output_signals = (id) => {
   });
   const animateClickTile = (event) => {
     const clickedTileId = event.target.id;
+    clickArray.push(clickedTileId);
     const clickedTile = event.target;
     clickedTile.classList.add("active");
     setTimeout(() => {
@@ -48,7 +48,7 @@ const output_signals = (id) => {
       });
     }, 1000);
 
-    console.log(clickedTileId);
+    console.log(clickArray);
   };
   for (const tile of rightBox) {
     tile.addEventListener("click", animateClickTile);
