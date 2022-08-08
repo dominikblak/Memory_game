@@ -1,5 +1,6 @@
 const randomArray = [];
 const clickArray = [];
+let clickArrayNumber = [];
 let delay = 0;
 let level = 0;
 const numberOfSteps = document.querySelector(".js-steps");
@@ -47,8 +48,11 @@ const output_signals = (id) => {
         tile.classList.add("tileUserReady");
       });
     }, 1000);
+    clickArrayNumber = clickArray.map((str) => {
+      return Number(str);
+    });
 
-    console.log(clickArray);
+    console.log(clickArrayNumber);
   };
   for (const tile of rightBox) {
     tile.addEventListener("click", animateClickTile);
