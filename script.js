@@ -19,7 +19,6 @@ const create_game = () => {
   }
   output_signals();
   console.log(randomArray);
-  validationUserInput();
 };
 const animate_sequence_button = (id) => {
   let tileRandom = document.getElementById(id);
@@ -36,6 +35,7 @@ const output_signals = (id) => {
     } else {
       setTimeout(() => {
         animate_sequence_button("tileleft" + title);
+        validationUserInput(index);
       }, (delay += 1000));
       rightBox.forEach((tile) => {
         tile.classList.add("tileUserReady");
@@ -57,11 +57,13 @@ const animateClickTile = (event) => {
   clickArrayNumber = clickArray.map((str) => {
     return Number(str);
   });
-  randomArray[0] === clickArrayNumber[0] ? console.log("true") : console.log("false");
+
   console.log(clickArrayNumber);
 };
 for (const tile of rightBox) {
   tile.addEventListener("click", animateClickTile);
 }
 
-const validationUserInput = () => {};
+const validationUserInput = (index) => {
+  randomArray[index] === clickArrayNumber[index] ? console.log("true") : console.log("false");
+};
