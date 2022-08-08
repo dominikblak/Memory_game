@@ -9,8 +9,11 @@ const buttonStartGame = document.querySelector(".js-startGame");
 const rightBox = document.querySelectorAll(".js-gbTile");
 
 const animateClickTile = (event) => {
-  const clickedTile = event.target.id;
-  console.log(clickedTile);
+  const clickedTileId = event.target.id;
+  const clickedTile = event.target;
+  clickedTile.classList.add("active");
+
+  console.log(clickedTileId);
 };
 for (const tile of rightBox) {
   tile.addEventListener("click", animateClickTile);
