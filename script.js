@@ -8,17 +8,6 @@ const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
 const rightBox = document.querySelectorAll(".js-gbTile");
 
-const animateClickTile = (event) => {
-  const clickedTileId = event.target.id;
-  const clickedTile = event.target;
-  clickedTile.classList.add("active");
-
-  console.log(clickedTileId);
-};
-for (const tile of rightBox) {
-  tile.addEventListener("click", animateClickTile);
-}
-
 buttonStartGame.addEventListener("click", () => {
   create_game();
 });
@@ -48,4 +37,14 @@ const output_signals = (id) => {
       tile.classList.add("tileUserReady");
     });
   });
+  const animateClickTile = (event) => {
+    const clickedTileId = event.target.id;
+    const clickedTile = event.target;
+    clickedTile.classList.add("active");
+
+    console.log(clickedTileId);
+  };
+  for (const tile of rightBox) {
+    tile.addEventListener("click", animateClickTile);
+  }
 };
