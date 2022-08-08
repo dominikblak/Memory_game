@@ -19,6 +19,7 @@ const create_game = () => {
   }
   output_signals();
   console.log(randomArray);
+  validationUserInput();
 };
 const animate_sequence_button = (id) => {
   let tileRandom = document.getElementById(id);
@@ -30,7 +31,7 @@ const animate_sequence_button = (id) => {
 
 const output_signals = (id) => {
   randomArray.forEach((title, index) => {
-    if (index > 0) {
+    if (index !== 0) {
       return;
     } else {
       setTimeout(() => {
@@ -56,7 +57,7 @@ const animateClickTile = (event) => {
   clickArrayNumber = clickArray.map((str) => {
     return Number(str);
   });
-
+  randomArray[0] === clickArrayNumber[0] ? console.log("true") : console.log("false");
   console.log(clickArrayNumber);
 };
 for (const tile of rightBox) {
