@@ -8,6 +8,14 @@ const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
 const rightBox = document.querySelectorAll(".js-gbTile");
 
+const animateClickTile = (event) => {
+  const clickedTile = event.target.id;
+  console.log(clickedTile);
+};
+for (const tile of rightBox) {
+  tile.addEventListener("click", animateClickTile);
+}
+
 buttonStartGame.addEventListener("click", () => {
   create_game();
 });
