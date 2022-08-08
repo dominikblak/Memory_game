@@ -41,6 +41,12 @@ const output_signals = (id) => {
     const clickedTileId = event.target.id;
     const clickedTile = event.target;
     clickedTile.classList.add("active");
+    setTimeout(() => {
+      clickedTile.classList.remove("active");
+      rightBox.forEach((tile) => {
+        tile.classList.add("tileUserReady");
+      });
+    }, 1000);
 
     console.log(clickedTileId);
   };
@@ -48,3 +54,5 @@ const output_signals = (id) => {
     tile.addEventListener("click", animateClickTile);
   }
 };
+
+const validationUserInput = () => {};
