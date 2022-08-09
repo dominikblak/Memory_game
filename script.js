@@ -11,7 +11,7 @@ const buttonStartGame = document.querySelector(".js-startGame");
 const rightBox = document.querySelectorAll(".js-gbTile");
 const gameBoxes = document.querySelector(".js-gb");
 const headerWin = document.querySelector(".js-win");
-
+let numberSteps;
 buttonStartGame.addEventListener("click", () => {
   create_game();
 
@@ -25,6 +25,8 @@ const create_game = () => {
     draw = Math.floor(Math.random() * 16) + 1;
     randomArray.push(draw);
   }
+  numberSteps = +choiceNumberOfSteps;
+
   output_signals();
   console.log(randomArray);
 };
@@ -48,6 +50,22 @@ const output_signals = (id) => {
     tile.classList.add("tileUserReady");
   });
 };
+const checkInput = () => {
+  if (clickArray.length === level) {
+    console.log(randomArray[level - 1]);
+    console.log(clickArrayNumber[level - 1]);
+    if (numberSteps == clickArray.length) {
+      win();
+    }
+    if (randomArray[level - 1] == clickArrayNumber[level - 1]) {
+      level++;
+      output_signals();
+      clickArray = [];
+    } else {
+      gameOver();
+    }
+  }
+};
 const animateClickTile = (event) => {
   const clickedTileId = event.target.id;
   clickArray.push(clickedTileId);
@@ -63,12 +81,7 @@ const animateClickTile = (event) => {
   clickArrayNumber = clickArray.map((str) => {
     return Number(str);
   });
-  if (clickArray.length === level) {
-    console.log("validation");
-    level++;
-    output_signals();
-    clickArray = [];
-  }
+  checkInput();
   console.log(clickArrayNumber);
 };
 
@@ -79,27 +92,28 @@ const validationUserInput = (buttonid) => {
     can_input = false;
     gameOver();
   }
-  if (clickArray.length == level && !isgameover) {
-    level++;
-    delay = 0;
-    clickArray = [];
-  }
+  // if (clickArray.length == level && !isgameover) {
+  //   level++;
+  //   delay = 0;
+  //   clickArray = [];
+  // }
 };
 
 const gameOver = () => {
   rightBox.forEach((tile) => {
     tile.classList.remove("tileUserReady");
     tile.classList.add("tileWrong");
+    tile.removeEventListener("click", animateClickTile);
   });
-  setTimeout(() => {
-    rightBox.forEach((tile) => {
-      tile.classList.remove("tileWrong");
-      for (const tile of rightBox) {
-        tile.removeEventListener("click", animateClickTile);
-      }
-    });
-    create_game();
-  }, 3000);
+  // setTimeout(() => {
+  //   rightBox.forEach((tile) => {
+  //     tile.classList.remove("tileWrong");
+  //     for (const tile of rightBox) {
+  //       tile.removeEventListener("click", animateClickTile);
+  //     }
+  //   });
+  //   create_game();
+  // }, 3000);
 };
 
 const win = () => {
