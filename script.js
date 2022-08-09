@@ -1,15 +1,23 @@
 const randomArray = [];
 const clickArray = [];
 let clickArrayNumber = [];
-let delay = 0;
-let level = 0;
+let delay = 1000;
+let level = 5;
+let isgameover;
+let canInput;
 const numberOfSteps = document.querySelector(".js-steps");
 const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
 const rightBox = document.querySelectorAll(".js-gbTile");
+const gameBoxes = document.querySelector(".js-gb");
+const headerWin = document.querySelector(".js-win");
 
 buttonStartGame.addEventListener("click", () => {
   create_game();
+
+  for (const tile of rightBox) {
+    tile.addEventListener("click", animateClickTile);
+  }
 });
 const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
@@ -28,19 +36,17 @@ const animate_sequence_button = (id) => {
   }, 1000);
 };
 
+const animate_pressed_button = (id) => {};
 const output_signals = (id) => {
   randomArray.forEach((title, index) => {
-    if (index !== 0) {
-      return;
-    } else {
+    if (index < level) {
       setTimeout(() => {
         animate_sequence_button("tileleft" + title);
-        validationUserInput(index);
       }, (delay += 1000));
-      rightBox.forEach((tile) => {
-        tile.classList.add("tileUserReady");
-      });
     }
+  });
+  rightBox.forEach((tile) => {
+    tile.classList.add("tileUserReady");
   });
 };
 const animateClickTile = (event) => {
@@ -60,10 +66,38 @@ const animateClickTile = (event) => {
 
   console.log(clickArrayNumber);
 };
-for (const tile of rightBox) {
-  tile.addEventListener("click", animateClickTile);
-}
 
-const validationUserInput = (index) => {
-  randomArray[index] === clickArrayNumber[index] ? console.log("true") : console.log("false");
+const validationUserInput = (buttonid) => {
+  animateClickTile(buttonid);
+  if (clickArray[clickArray.length - 1] !== randomArray[clickArray.length - 1]) {
+    isgameover = true;
+    can_input = false;
+    gameOver();
+  }
+  if (clickArray.length == level && !isgameover) {
+    level++;
+    delay = 0;
+    clickArray = [];
+  }
+};
+
+const gameOver = () => {
+  rightBox.forEach((tile) => {
+    tile.classList.remove("tileUserReady");
+    tile.classList.add("tileWrong");
+  });
+  setTimeout(() => {
+    rightBox.forEach((tile) => {
+      tile.classList.remove("tileWrong");
+      for (const tile of rightBox) {
+        tile.removeEventListener("click", animateClickTile);
+      }
+    });
+    create_game();
+  }, 3000);
+};
+
+const win = () => {
+  gameBoxes.classList.add("win");
+  headerWin.classList.toggle("gameBoxes__header");
 };

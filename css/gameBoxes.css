@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: row;
 }
+.gameBoxes__header {
+  display: none;
+}
 .gameBoxes__box {
   width: 100%;
   height: 100%;
@@ -61,4 +64,14 @@
 .tileUserReady {
   background-color: antiquewhite;
   cursor: pointer;
+}
+.tileWrong {
+  background-color: red;
+}
+
+.win {
+  display: none;
+}
+.win h1 {
+  display: block !important;
 }
