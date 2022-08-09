@@ -54,7 +54,7 @@ const checkInput = () => {
   if (clickArray.length === level) {
     console.log(randomArray[level - 1]);
     console.log(clickArrayNumber[level - 1]);
-    if (numberSteps == clickArray.length) {
+    if (JSON.stringify(randomArray) == JSON.stringify(clickArrayNumber)) {
       win();
     }
     if (randomArray[level - 1] == clickArrayNumber[level - 1]) {
