@@ -1,8 +1,8 @@
 const randomArray = [];
-const clickArray = [];
+let clickArray = [];
 let clickArrayNumber = [];
 let delay = 1000;
-let level = 5;
+let level = 1;
 let isgameover;
 let canInput;
 const numberOfSteps = document.querySelector(".js-steps");
@@ -36,9 +36,8 @@ const animate_sequence_button = (id) => {
   }, 1000);
 };
 
-const animate_pressed_button = (id) => {};
 const output_signals = (id) => {
-  randomArray.forEach((title, index) => {
+  randomArray.slice(0, level).forEach((title, index) => {
     if (index < level) {
       setTimeout(() => {
         animate_sequence_button("tileleft" + title);
@@ -63,7 +62,12 @@ const animateClickTile = (event) => {
   clickArrayNumber = clickArray.map((str) => {
     return Number(str);
   });
-
+  if (clickArray.length === level) {
+    console.log("validation");
+    level++;
+    output_signals();
+    clickArray = [];
+  }
   console.log(clickArrayNumber);
 };
 
