@@ -67,6 +67,7 @@
 }
 .tileWrong {
   background-color: red;
+  cursor: auto;
 }
 
 .win {
