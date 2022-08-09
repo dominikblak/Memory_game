@@ -59,6 +59,7 @@ const animateClickTile = (event) => {
       tile.classList.add("tileUserReady");
     });
   }, 1000);
+
   clickArrayNumber = clickArray.map((str) => {
     return Number(str);
   });
