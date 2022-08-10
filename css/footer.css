@@ -1,0 +1,8 @@
+.footer {
+  margin: 10px;
+  text-align: center;
+}
+.footer--link {
+  text-decoration: none;
+  color: white;
+}
