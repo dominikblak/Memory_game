@@ -76,3 +76,8 @@
 .win h1 {
   display: block !important;
 }
+@media (max-width: 767px) {
+  .gameBoxes {
+    flex-direction: column;
+  }
+}
