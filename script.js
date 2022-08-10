@@ -13,11 +13,17 @@ const gameBoxes = document.querySelector(".js-gb");
 const headerWin = document.querySelector(".js-win");
 let numberSteps;
 
-buttonStartGame.addEventListener("click", () => {
+const start = () => {
+  randomArray = [];
+  clickArray = [];
+  clickArrayNumber = [];
+  level = 1;
   if (randomArray.length == 0) {
     create_game();
   }
-});
+};
+
+buttonStartGame.addEventListener("click", start);
 const reset = () => {
   rightBox.forEach((tile) => {
     tile.classList.remove("tileUserReady");
@@ -143,6 +149,8 @@ const gameOver = () => {
 };
 
 const win = () => {
+  buttonStartGame.removeEventListener("click", start);
+
   gameBoxes.classList.add("win");
   headerWin.classList.toggle("gameBoxes__header");
 };
