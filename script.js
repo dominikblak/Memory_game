@@ -14,7 +14,6 @@ const headerWin = document.querySelector(".js-win");
 let numberSteps;
 
 const start = () => {
-  delay = 1000;
   randomArray = [];
   clickArray = [];
   clickArrayNumber = [];
@@ -61,11 +60,13 @@ const animate_sequence_button = (id) => {
   tileRandom.classList.add("active");
   setTimeout(() => {
     tileRandom.classList.remove("active");
+  }, 800);
+  setTimeout(() => {
     rightBox.forEach((tile) => {
       tile.classList.add("tileUserReady");
       tile.addEventListener("click", animateClickTile);
     });
-  }, 1000);
+  }, 1000 * level);
 };
 
 const output_signals = (id) => {
@@ -85,10 +86,10 @@ const checkInput = () => {
     if (JSON.stringify(randomArray) == JSON.stringify(clickArrayNumber)) {
       win();
     }
+    clickArray = [];
     if (randomArray[level - 1] == clickArrayNumber[level - 1]) {
       level++;
       output_signals();
-      clickArray = [];
     } else {
       gameOver();
     }
@@ -113,19 +114,33 @@ const animateClickTile = (event) => {
   console.log(clickArrayNumber);
 };
 
+// const gameOver = () => {
+//   rightBox.forEach((tile) => {
+//     tile.classList.remove("tileUserReady");
+//     tile.classList.add("tileWrong");
+//     tile.removeEventListener("click", animateClickTile);
+//   });
+
+//   setTimeout(() => {
+//     reset();
+//     rightBox.forEach((tile) => {
+//       tile.classList.remove("tileWrong");
+//     });
+//   }, 3000);
+// };
+
 const gameOver = () => {
   rightBox.forEach((tile) => {
     tile.classList.remove("tileUserReady");
     tile.classList.add("tileWrong");
     tile.removeEventListener("click", animateClickTile);
   });
-
   setTimeout(() => {
-    reset();
     rightBox.forEach((tile) => {
       tile.classList.remove("tileWrong");
+      output_signals();
     });
-  }, 3000);
+  }, 1000);
 };
 
 const win = () => {
