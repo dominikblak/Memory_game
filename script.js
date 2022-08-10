@@ -114,21 +114,6 @@ const animateClickTile = (event) => {
   console.log(clickArrayNumber);
 };
 
-// const gameOver = () => {
-//   rightBox.forEach((tile) => {
-//     tile.classList.remove("tileUserReady");
-//     tile.classList.add("tileWrong");
-//     tile.removeEventListener("click", animateClickTile);
-//   });
-
-//   setTimeout(() => {
-//     reset();
-//     rightBox.forEach((tile) => {
-//       tile.classList.remove("tileWrong");
-//     });
-//   }, 3000);
-// };
-
 const gameOver = () => {
   rightBox.forEach((tile) => {
     tile.classList.remove("tileUserReady");
