@@ -14,10 +14,6 @@ const headerWin = document.querySelector(".js-win");
 let numberSteps;
 buttonStartGame.addEventListener("click", () => {
   create_game();
-
-  for (const tile of rightBox) {
-    tile.addEventListener("click", animateClickTile);
-  }
 });
 const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
@@ -48,6 +44,7 @@ const output_signals = (id) => {
   });
   rightBox.forEach((tile) => {
     tile.classList.add("tileUserReady");
+    tile.addEventListener("click", animateClickTile);
   });
 };
 const checkInput = () => {
