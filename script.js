@@ -18,7 +18,7 @@ buttonStartGame.addEventListener("click", () => {
     create_game();
   }
 });
-buttonReset.addEventListener("click", () => {
+const reset = () => {
   rightBox.forEach((tile) => {
     tile.classList.remove("tileUserReady");
     tile.removeEventListener("click", animateClickTile);
@@ -27,6 +27,9 @@ buttonReset.addEventListener("click", () => {
   clickArray = [];
   level = 1;
   console.log(randomArray);
+};
+buttonReset.addEventListener("click", () => {
+  reset();
 });
 
 const create_game = () => {
@@ -120,6 +123,14 @@ const gameOver = () => {
     tile.classList.add("tileWrong");
     tile.removeEventListener("click", animateClickTile);
   });
+
+  setTimeout(() => {
+    reset();
+    rightBox.forEach((tile) => {
+      tile.classList.remove("tileWrong");
+    });
+  }, 3000);
+
   // setTimeout(() => {
   //   rightBox.forEach((tile) => {
   //     tile.classList.remove("tileWrong");
