@@ -1,4 +1,4 @@
-const randomArray = [];
+let randomArray = [];
 let clickArray = [];
 let clickArrayNumber = [];
 let delay = 1000;
@@ -12,9 +12,21 @@ const rightBox = document.querySelectorAll(".js-gbTile");
 const gameBoxes = document.querySelector(".js-gb");
 const headerWin = document.querySelector(".js-win");
 let numberSteps;
+
 buttonStartGame.addEventListener("click", () => {
   create_game();
 });
+buttonReset.addEventListener("click", () => {
+  rightBox.forEach((tile) => {
+    tile.classList.remove("tileUserReady");
+    tile.removeEventListener("click", animateClickTile);
+  });
+  randomArray = [];
+  clickArray = [];
+  level = 1;
+  console.log(randomArray);
+});
+
 const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
   for (i = 1; i <= choiceNumberOfSteps; i++) {
