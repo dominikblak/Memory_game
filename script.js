@@ -14,6 +14,7 @@ const headerWin = document.querySelector(".js-win");
 let numberSteps;
 
 const start = () => {
+  delay = 1000;
   randomArray = [];
   clickArray = [];
   clickArrayNumber = [];
@@ -68,6 +69,7 @@ const animate_sequence_button = (id) => {
 };
 
 const output_signals = (id) => {
+  delay = 1000;
   randomArray.slice(0, level).forEach((title, index) => {
     if (index < level) {
       setTimeout(() => {
