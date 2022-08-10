@@ -14,10 +14,6 @@ const headerWin = document.querySelector(".js-win");
 let numberSteps;
 buttonStartGame.addEventListener("click", () => {
   create_game();
-
-  for (const tile of rightBox) {
-    tile.addEventListener("click", animateClickTile);
-  }
 });
 const create_game = () => {
   const choiceNumberOfSteps = document.getElementById("steps").value;
@@ -31,10 +27,18 @@ const create_game = () => {
   console.log(randomArray);
 };
 const animate_sequence_button = (id) => {
+  rightBox.forEach((tile) => {
+    tile.classList.remove("tileUserReady");
+    tile.removeEventListener("click", animateClickTile);
+  });
   let tileRandom = document.getElementById(id);
   tileRandom.classList.add("active");
   setTimeout(() => {
     tileRandom.classList.remove("active");
+    rightBox.forEach((tile) => {
+      tile.classList.add("tileUserReady");
+      tile.addEventListener("click", animateClickTile);
+    });
   }, 1000);
 };
 
@@ -45,9 +49,6 @@ const output_signals = (id) => {
         animate_sequence_button("tileleft" + title);
       }, (delay += 1000));
     }
-  });
-  rightBox.forEach((tile) => {
-    tile.classList.add("tileUserReady");
   });
 };
 const checkInput = () => {
