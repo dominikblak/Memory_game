@@ -3,8 +3,6 @@ let clickArray = [];
 let clickArrayNumber = [];
 let delay = 1000;
 let level = 1;
-let isgameover;
-let canInput;
 const numberOfSteps = document.querySelector(".js-steps");
 const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
