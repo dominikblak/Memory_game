@@ -18,6 +18,8 @@ const start = () => {
   clickArray = [];
   clickArrayNumber = [];
   level = 1;
+  gameBoxes.classList.remove("win");
+  headerWin.classList.add("gameBoxes__header");
   if (randomArray.length == 0) {
     create_game();
   }
@@ -109,20 +111,6 @@ const animateClickTile = (event) => {
   console.log(clickArrayNumber);
 };
 
-const validationUserInput = (buttonid) => {
-  animateClickTile(buttonid);
-  if (clickArray[clickArray.length - 1] !== randomArray[clickArray.length - 1]) {
-    isgameover = true;
-    can_input = false;
-    gameOver();
-  }
-  // if (clickArray.length == level && !isgameover) {
-  //   level++;
-  //   delay = 0;
-  //   clickArray = [];
-  // }
-};
-
 const gameOver = () => {
   rightBox.forEach((tile) => {
     tile.classList.remove("tileUserReady");
@@ -136,21 +124,15 @@ const gameOver = () => {
       tile.classList.remove("tileWrong");
     });
   }, 3000);
-
-  // setTimeout(() => {
-  //   rightBox.forEach((tile) => {
-  //     tile.classList.remove("tileWrong");
-  //     for (const tile of rightBox) {
-  //       tile.removeEventListener("click", animateClickTile);
-  //     }
-  //   });
-  //   create_game();
-  // }, 3000);
 };
 
 const win = () => {
-  buttonStartGame.removeEventListener("click", start);
+  randomArray = [];
+  clickArray = [];
+  clickArrayNumber = [];
+  level = 1;
+  buttonStartGame.addEventListener("click", start);
 
   gameBoxes.classList.add("win");
-  headerWin.classList.toggle("gameBoxes__header");
+  headerWin.classList.remove("gameBoxes__header");
 };
