@@ -14,7 +14,9 @@ const headerWin = document.querySelector(".js-win");
 let numberSteps;
 
 buttonStartGame.addEventListener("click", () => {
-  create_game();
+  if (randomArray.length == 0) {
+    create_game();
+  }
 });
 buttonReset.addEventListener("click", () => {
   rightBox.forEach((tile) => {
