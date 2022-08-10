@@ -3,13 +3,13 @@ let clickArray = [];
 let clickArrayNumber = [];
 let delay = 1000;
 let level = 1;
+let numberSteps;
 const numberOfSteps = document.querySelector(".js-steps");
 const buttonReset = document.querySelector(".js-reset");
 const buttonStartGame = document.querySelector(".js-startGame");
 const rightBox = document.querySelectorAll(".js-gbTile");
 const gameBoxes = document.querySelector(".js-gb");
 const headerWin = document.querySelector(".js-win");
-let numberSteps;
 
 const start = () => {
   randomArray = [];
@@ -46,10 +46,10 @@ const create_game = () => {
   }
   numberSteps = +choiceNumberOfSteps;
 
-  output_signals();
+  drawTiles();
   console.log(randomArray);
 };
-const animate_sequence_button = (id) => {
+const animateLeftTiles = (id) => {
   rightBox.forEach((tile) => {
     tile.classList.remove("tileUserReady");
     tile.removeEventListener("click", animateClickTile);
@@ -67,12 +67,12 @@ const animate_sequence_button = (id) => {
   }, 1000 * level);
 };
 
-const output_signals = (id) => {
+const drawTiles = (id) => {
   delay = 1000;
   randomArray.slice(0, level).forEach((title, index) => {
     if (index < level) {
       setTimeout(() => {
-        animate_sequence_button("tileleft" + title);
+        animateLeftTiles("tileleft" + title);
       }, (delay += 1000));
     }
   });
@@ -87,7 +87,7 @@ const checkInput = () => {
     clickArray = [];
     if (randomArray[level - 1] == clickArrayNumber[level - 1]) {
       level++;
-      output_signals();
+      drawTiles();
     } else {
       gameOver();
     }
@@ -121,7 +121,7 @@ const gameOver = () => {
   setTimeout(() => {
     rightBox.forEach((tile) => {
       tile.classList.remove("tileWrong");
-      output_signals();
+      drawTiles();
     });
   }, 1000);
 };
@@ -132,7 +132,6 @@ const win = () => {
   clickArrayNumber = [];
   level = 1;
   buttonStartGame.addEventListener("click", start);
-
   gameBoxes.classList.add("win");
   headerWin.classList.remove("gameBoxes__header");
 };
