@@ -124,16 +124,6 @@ const gameOver = () => {
       tile.classList.remove("tileWrong");
     });
   }, 3000);
-
-  // setTimeout(() => {
-  //   rightBox.forEach((tile) => {
-  //     tile.classList.remove("tileWrong");
-  //     for (const tile of rightBox) {
-  //       tile.removeEventListener("click", animateClickTile);
-  //     }
-  //   });
-  //   create_game();
-  // }, 3000);
 };
 
 const win = () => {
