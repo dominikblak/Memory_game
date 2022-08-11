@@ -1,7 +1,7 @@
 let randomArray = [];
 let clickArray = [];
 let clickArrayNumber = [];
-let delay = 1000;
+let delay = 800;
 let level = 1;
 let numberSteps;
 const numberOfSteps = document.querySelector(".js-steps");
@@ -32,7 +32,6 @@ const reset = () => {
   randomArray = [];
   clickArray = [];
   level = 1;
-  console.log(randomArray);
 };
 buttonReset.addEventListener("click", () => {
   reset();
@@ -47,7 +46,6 @@ const create_game = () => {
   numberSteps = +choiceNumberOfSteps;
 
   drawTiles();
-  console.log(randomArray);
 };
 const animateLeftTiles = (id) => {
   rightBox.forEach((tile) => {
@@ -58,29 +56,27 @@ const animateLeftTiles = (id) => {
   tileRandom.classList.add("active");
   setTimeout(() => {
     tileRandom.classList.remove("active");
-  }, 800);
+  }, 500);
   setTimeout(() => {
     rightBox.forEach((tile) => {
       tile.classList.add("tileUserReady");
       tile.addEventListener("click", animateClickTile);
     });
-  }, 1000 * level);
+  }, 800 * level);
 };
 
 const drawTiles = (id) => {
-  delay = 1000;
+  delay = 800;
   randomArray.slice(0, level).forEach((title, index) => {
     if (index < level) {
       setTimeout(() => {
         animateLeftTiles("tileleft" + title);
-      }, (delay += 1000));
+      }, (delay += 800));
     }
   });
 };
 const checkInput = () => {
   if (clickArray.length === level) {
-    console.log(randomArray[level - 1]);
-    console.log(clickArrayNumber[level - 1]);
     if (JSON.stringify(randomArray) == JSON.stringify(clickArrayNumber)) {
       win();
     }
@@ -103,13 +99,12 @@ const animateClickTile = (event) => {
     rightBox.forEach((tile) => {
       tile.classList.add("tileUserReady");
     });
-  }, 1000);
+  }, 500);
 
   clickArrayNumber = clickArray.map((str) => {
     return Number(str);
   });
   checkInput();
-  console.log(clickArrayNumber);
 };
 
 const gameOver = () => {
@@ -123,7 +118,7 @@ const gameOver = () => {
       tile.classList.remove("tileWrong");
       drawTiles();
     });
-  }, 1000);
+  }, 800);
 };
 
 const win = () => {
