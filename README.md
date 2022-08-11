@@ -1,13 +1,13 @@
-# 💶 Currency-converter-JS
+# 🎲 Memory game -JS
 ******
 # 👨‍💻 Author:
 Dominik Blak
 
 ## 🚀 Demo :
-[Currency-converter](https://dominikblak.github.io/Currency-converter-JS)
+https://dominikblak.github.io/Memory_game/
 
 ### 📖 Description :
-Currency converter - Currency converter from PLN to EUR, USD, GBP.
+Play a memory game inspired by "Among Us" 👾 !  Play the correct combinations of animated tiles, the number of which you choose from 1 to 10.
 
 <img src="https://github.com/dominikblak/Memory_game/blob/main/img/Animation.gif" alt="demo_Currency_converter">
 
