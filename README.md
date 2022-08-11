@@ -9,7 +9,7 @@ Dominik Blak
 ### 📖 Description :
 Currency converter - Currency converter from PLN to EUR, USD, GBP.
 
-<img src="https://github.com/dominikblak/Currency-converter/blob/master/img/Animation_currency_converter.gif" alt="demo_Currency_converter">
+<img src="https://github.com/dominikblak/Memory_game/blob/main/img/Animation.gif" alt="demo_Currency_converter">
 
 #### 🧰 Technology
 - HTML
